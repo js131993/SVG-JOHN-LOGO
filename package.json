@@ -1,0 +1,10 @@
+{
+  "name": "svg-john-logo",
+  "version": "1.0.0",
+  "description": "package.json",
+  "main": "server.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  
