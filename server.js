@@ -59,35 +59,6 @@ const questions = [{
 
 // AN OBJECT IS A BUNDLE OF RELATED INFORMATION, MODEL THE REAL WORLD, Describing
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-  const content =
-`# ${data.title}
-### DESCRIPTION
-  ${data.description}
-
-###Table Of Contents
-- [License](#license)
-- [Installation](#installation)
-- [Usage](#usage)
-
-###LICENSE
-  ${data.license}
-
-###INSTALLATION
-  ${data.installation}
-  
-### USAGE
-  ${data.usage}`;
-
-fs.writeFile(fileName, content, err => 
-{
-  if (err) {
-    console.error(err);
-  }
-  // file written successfully
-});
-}
-
 
 // TODO: Create a function to initialize app
 function init() {
