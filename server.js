@@ -1,6 +1,7 @@
 // GIVEN a command-line application that accepts user input
 var inquirer = require('inquirer');
 const fs = require('fs');
+const (Circle, Shape, Triangle) = require("./lib/shapes.js")
 // WHEN I am prompted for text
 
 // THEN I can enter up to three characters
@@ -51,10 +52,6 @@ const questions = [{
             name: "Q4",
             message: "What would you like for the color of the shape? (Example: #FF5733) ",
         },
-        {
-        name: "Q5",
-        message: "How do you use?",
-        }
 ];
 
 
@@ -97,15 +94,37 @@ function init() {
   inquirer.prompt(questions)
  
   .then((answers) => {
-    let svg = {};
-    svg.text = answers.Q1;
-    readme.textColor = answers.Q2;
-    readme.shape = answers.Q3;
-    readme.shapeColor = answers.Q4;
-    readme.usage = answers.Q5;
-    writeToFile("./READMETest.md", readme);
+    let svg = "";
+    let shape;
+    let text = answers.Q1;
+    let textColor = answers.Q2;
+    let shapeType = answers.Q3;
+    let shapeColor = answers.Q4;
+    
+    if(shapeType == "Triangle"){
+      shape = new Triangle(text, textColor, shapeColor)
+    } else if (shapeType == "Circle"){
+      shape = new Circle(text, textColor, shapeColor)
+      }
+      else if (shapeType == "Square"){
+        shape = new Square(text, textColor, shapeColor)
+        }
 
+        svg = `
+        <svg height ="200" width = "300">
+        ${shape.render()}
+        <svg>
+        `
+
+
+        fs.writeFile("./example/logo.svg", svg, (err) => 
+          {
+            if (err) {
+              console.error(err);
+            }
   })
+
+  //The data is just a string so let svg needs to be an empty string
   // answers are just objects, we are printing out the objects
   .catch((error) => {
     if (error.isTtyError) {
